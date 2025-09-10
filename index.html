@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --bg: #f5f6f8;
       --card: rgba(255,255,255,0.8);
       --text: #111;
@@ -20,17 +20,16 @@
       color-scheme: light;
     }
 
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg: #0e1116;
-        --card: rgba(25,28,35,0.85);
-        --text: #e6eef6;
-        --muted: #95a3b2;
-        --accent: #60a5fa;
-      }
+    html[data-theme="dark"] {
+      --bg: #0e1116;
+      --card: rgba(25,28,35,0.85);
+      --text: #e6eef6;
+      --muted: #95a3b2;
+      --accent: #60a5fa;
+      color-scheme: dark;
     }
 
-    html,body{
+    html,body {
       height:100%;
       margin:0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -39,7 +38,7 @@
       line-height:1.6;
     }
 
-    .wrap{
+    .wrap {
       min-height:100%;
       display:flex;
       align-items:center;
@@ -48,7 +47,7 @@
       box-sizing:border-box;
     }
 
-    .card{
+    .card {
       width:100%;
       max-width:var(--max-width);
       background: var(--card);
@@ -59,14 +58,14 @@
       border: 1px solid rgba(255,255,255,0.4);
     }
 
-    header{
+    header {
       display:flex;
       align-items: start;
       gap:16px;
       margin-bottom:18px;
     }
 
-    .title{
+    .title {
       font-family: "Source Serif 4", serif;
       font-size: clamp(22px, 3.6vw, 34px);
       line-height:1.1;
@@ -74,13 +73,13 @@
       font-weight:600;
     }
 
-    .meta{
+    .meta {
       margin:6px 0 0 0;
       color:var(--muted);
       font-size:13px;
     }
 
-    .controls{
+    .controls {
       margin-left:auto;
     }
 
@@ -94,11 +93,11 @@
       cursor:pointer;
     }
 
-    article{
+    article {
       font-size:17px;
     }
 
-    .lead{
+    .lead {
       margin-top:0;
       font-family: "Source Serif 4", serif;
       font-weight:400;
@@ -106,17 +105,17 @@
       margin-bottom:14px;
     }
 
-    p{
+    p {
       margin:0 0 14px 0;
     }
 
-    .byline{
+    .byline {
       color:var(--muted);
       font-size:13px;
       margin-top:18px;
     }
 
-    footer{
+    footer {
       margin-top:22px;
       border-top:1px dashed rgba(0,0,0,0.15);
       padding-top:12px;
@@ -129,7 +128,7 @@
       flex-wrap:wrap;
     }
 
-    a{
+    a {
       color:var(--accent);
       text-decoration:none;
     }
@@ -183,12 +182,15 @@
     (function(){
       const btn = document.getElementById('theme-toggle');
       const root = document.documentElement;
+
+      // Start from system preference
       let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
 
       function applyTheme() {
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
         btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
         btn.textContent = dark ? 'Dark' : 'Light';
-        root.style.setProperty('color-scheme', dark ? 'dark' : 'light');
       }
 
       btn.addEventListener('click', () => {
