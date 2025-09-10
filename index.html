@@ -6,27 +6,24 @@
   <title>The Quiet Art of Observation</title>
   <meta name="description" content="A short, reflective five-paragraph essay on observation, curiosity, and the practice of noticing." />
 
-  <!-- Optional: swap or remove the font link if you prefer system fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #fbfbfd;
-      --card: #ffffff;
-      --text: #0b1220;
+      --bg: #f5f6f8;
+      --card: rgba(255,255,255,0.8);
+      --text: #111;
       --muted: #5b6770;
       --accent: #2563eb;
-      --radius: 14px;
+      --radius: 12px;
       --max-width: 760px;
       color-scheme: light;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
 
     @media (prefers-color-scheme: dark){
       :root{
-        --bg: #0b0f14;
-        --card: #071021;
+        --bg: #0e1116;
+        --card: rgba(25,28,35,0.85);
         --text: #e6eef6;
         --muted: #95a3b2;
         --accent: #60a5fa;
@@ -37,11 +34,9 @@
       height:100%;
       margin:0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,var(--bg), color-mix(in srgb,var(--bg) 90%, black 3%));
+      background: var(--bg);
       color:var(--text);
       line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
     }
 
     .wrap{
@@ -56,12 +51,12 @@
     .card{
       width:100%;
       max-width:var(--max-width);
-      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
-      backdrop-filter: blur(6px);
+      background: var(--card);
+      backdrop-filter: blur(8px);
       border-radius:var(--radius);
       padding:36px;
-      box-shadow: 0 8px 30px rgba(2,6,23,0.12);
-      border: 1px solid color-mix(in srgb,var(--card) 70%, transparent);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.4);
     }
 
     header{
@@ -72,12 +67,11 @@
     }
 
     .title{
-      font-family: "Source Serif 4", "Georgia", serif;
+      font-family: "Source Serif 4", serif;
       font-size: clamp(22px, 3.6vw, 34px);
-      line-height:1.08;
+      line-height:1.1;
       margin:0;
       font-weight:600;
-      color:var(--text);
     }
 
     .meta{
@@ -88,24 +82,20 @@
 
     .controls{
       margin-left:auto;
-      display:flex;
-      gap:8px;
-      align-items:center;
     }
 
     .toggle {
       background:transparent;
-      border:1px solid color-mix(in srgb,var(--muted) 30%, transparent);
+      border:1px solid rgba(0,0,0,0.15);
       color:var(--muted);
       padding:6px 10px;
-      border-radius:10px;
+      border-radius:8px;
       font-size:13px;
       cursor:pointer;
     }
 
     article{
       font-size:17px;
-      color:var(--text);
     }
 
     .lead{
@@ -113,24 +103,11 @@
       font-family: "Source Serif 4", serif;
       font-weight:400;
       font-size:20px;
-      color:var(--text);
       margin-bottom:14px;
     }
 
     p{
       margin:0 0 14px 0;
-      text-wrap:balance;
-      hyphens:auto;
-    }
-
-    p::first-letter{
-      font-size:1.65em;
-      font-weight:600;
-      float:left;
-      line-height:0.9;
-      margin-right:8px;
-      color:var(--accent);
-      font-family: "Inter", sans-serif;
     }
 
     .byline{
@@ -141,7 +118,7 @@
 
     footer{
       margin-top:22px;
-      border-top:1px dashed color-mix(in srgb,var(--muted) 20%, transparent);
+      border-top:1px dashed rgba(0,0,0,0.15);
       padding-top:12px;
       color:var(--muted);
       font-size:13px;
@@ -158,24 +135,17 @@
     }
 
     @media (max-width:520px){
-      .card{ padding:20px; border-radius:12px; }
-      .toggle{ padding:6px 8px; font-size:12px; }
+      .card{ padding:20px; border-radius:10px; }
     }
 
-    /* Print friendly */
     @media print{
       body{ background: white; color: black; }
       .card{ box-shadow:none; border:none; background:transparent; }
-      .toggle, .controls{ display:none; }
+      .toggle{ display:none; }
     }
-
-    /* Accessibility focus */
-    a:focus, button:focus { outline: 3px solid color-mix(in srgb, var(--accent) 30%, transparent); outline-offset:3px; }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#content" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
-
   <div class="wrap">
     <main class="card" role="main" aria-labelledby="page-title">
       <header>
@@ -183,13 +153,12 @@
           <h1 id="page-title" class="title">The Quiet Art of Observation</h1>
           <div class="meta">By R. Calder — <time datetime="2025-09-10">September 10, 2025</time></div>
         </div>
-
-        <div class="controls" aria-hidden="false">
-          <button class="toggle" id="theme-toggle" aria-pressed="false" title="Toggle light / dark">Toggle theme</button>
+        <div class="controls">
+          <button class="toggle" id="theme-toggle" aria-pressed="false">Toggle theme</button>
         </div>
       </header>
 
-      <article id="content" aria-label="Article: The Quiet Art of Observation">
+      <article id="content">
         <p class="lead">Observation is not a passive act. It is a disciplined attention that draws a line between what moves us and what moves in front of us.</p>
 
         <p>On a crowded street we can walk and miss the tiny choreography of daily life — the way a cyclist times a gap in the cars, the careful adjustments of a vendor arranging oranges, the short conversations that stitch strangers together. These small events are the raw material of understanding; they teach patterns that charts and datasets by themselves cannot convey.</p>
@@ -200,7 +169,7 @@
 
         <p>Finally, there is play in observation. The most creative insights often arrive as sideways glimpses — analogies, jokes, and failed attempts that reframe a question. Cultivate habits that make noticing habitual: carry a small notepad, take short walks without a phone, or ask a simple question each day. Over time the quiet art of observation becomes a mode of living, and the small things become a reliable map for larger thinking.</p>
 
-        <div class="byline" aria-hidden="false">Tags: attention · curiosity · practice</div>
+        <div class="byline">Tags: attention · curiosity · practice</div>
       </article>
 
       <footer>
@@ -214,28 +183,16 @@
     (function(){
       const btn = document.getElementById('theme-toggle');
       const root = document.documentElement;
-
-      // Initialize based on prefers-color-scheme
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      let dark = prefersDark;
+      let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
       function applyTheme() {
-        if (dark) {
-          root.style.setProperty('color-scheme','dark');
-          document.body.style.background = ''; // let CSS handle
-          btn.setAttribute('aria-pressed','true');
-          btn.textContent = 'Dark';
-        } else {
-          root.style.setProperty('color-scheme','light');
-          btn.setAttribute('aria-pressed','false');
-          btn.textContent = 'Light';
-        }
+        btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        btn.textContent = dark ? 'Dark' : 'Light';
+        root.style.setProperty('color-scheme', dark ? 'dark' : 'light');
       }
 
       btn.addEventListener('click', () => {
         dark = !dark;
-        // Toggle a data attribute used by CSS prefers-color-scheme override if needed
-        if (dark) root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme');
         applyTheme();
       });
 
